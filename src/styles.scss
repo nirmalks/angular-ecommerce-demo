@@ -34,4 +34,5 @@ $light-theme: mat.define-light-theme((
   @include mat.core-theme($light-theme);
 }
 
-
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
