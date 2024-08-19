@@ -1,34 +1,39 @@
-<section>
-  <h2>Products</h2>
+<section class="display-flex-center">
   @if (images) {
-    <ngb-carousel>
-      <ng-template ngbSlide>
-        <div class="picsum-img-wrapper">
+  <ngb-carousel>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <a routerLink="/products/mobiles">
           <img [src]="images[0]" alt="Random first slide" />
-        </div>
-        <div class="carousel-caption">
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </div>
-      </ng-template>
-      <ng-template ngbSlide>
-        <div class="picsum-img-wrapper">
+        </a>
+      </div>
+      <div class="carousel-caption">
+        <h3>VIVO X100 Pro</h3>
+        <p>Get x100 pro at a 30% discount</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <a routerLink="/products/laptops">
           <img [src]="images[1]" alt="Random second slide" />
-        </div>
-        <div class="carousel-caption">
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-      </ng-template>
-      <ng-template ngbSlide>
-        <div class="picsum-img-wrapper">
+        </a>
+      </div>
+      <div class="carousel-caption">
+        <h3>Apple 15 max pro</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <a routerLink="/products/cameras">
           <img [src]="images[2]" alt="Random third slide" />
-        </div>
-        <div class="carousel-caption">
-          <h3>Third slide label</h3>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-        </div>
-      </ng-template>
-    </ngb-carousel>
+        </a>
+      </div>
+      <div class="carousel-caption">
+        <h3>S24 Ultra</h3>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+      </div>
+    </ng-template>
+  </ngb-carousel>
   }
 </section>

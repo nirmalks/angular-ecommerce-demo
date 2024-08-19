@@ -36,3 +36,8 @@ $light-theme: mat.define-light-theme((
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+
+.display-flex-center {
+  display: flex;
+  justify-content: center;
+}
