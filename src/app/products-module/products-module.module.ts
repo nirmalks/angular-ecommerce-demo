@@ -13,7 +13,7 @@ import { ProductsRoutingModule } from './products-routing.module';
     CommonModule,
     ProductComponent,
     ProductsListComponent,
-    ProductsRoutingModule
+    ProductsRoutingModule,
   ],
   providers: [ ProductsService]
 })

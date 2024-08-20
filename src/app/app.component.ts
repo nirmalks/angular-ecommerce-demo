@@ -18,10 +18,7 @@ import { RouterModule } from '@angular/router';
 })
 export class AppComponent {
   title = 'ecommerce-ng';
-  products;
 
-  constructor(private productsService: ProductsService) {
-    this.products = this.productsService.getProducts().pipe();
-    console.log(this.products);
+  constructor() {
   }
 }
