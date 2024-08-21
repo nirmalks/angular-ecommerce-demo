@@ -5,6 +5,9 @@ import  mobiles from '../products';
   providedIn: 'root'
 })
 export class ProductsService {
+  getProduct(productName: string | null): Observable<any> {
+    return of(mobiles[0]);
+  }
 
   constructor() { }
 

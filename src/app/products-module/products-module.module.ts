@@ -4,6 +4,7 @@ import { ProductComponent } from '../product/product.component';
 import { ProductsListComponent } from '../products-list/products-list.component';
 import { ProductsService } from '../products.service';
 import { ProductsRoutingModule } from './products-routing.module';
+import { ProductResolver } from '../product/product.resolver';
 
 
 
@@ -14,6 +15,7 @@ import { ProductsRoutingModule } from './products-routing.module';
     ProductComponent,
     ProductsListComponent,
     ProductsRoutingModule,
+
   ],
   providers: [ ProductsService]
 })

@@ -1,1 +1,43 @@
-<p>product works!</p>
+@if (product) {
+  <mat-card class="display-flex" appearance="outlined">
+    <div class="display-flex">
+      <img mat-card-image src="../assets/moto-phone.webp" alt={{product.name}}>
+      <mat-card-actions>
+        <button mat-button>Add to Cart</button>
+        <button mat-button>Buy now</button>
+      </mat-card-actions>
+    </div>
+    <div class="display-flex flex-col">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{product.name}}</mat-card-title>
+      <mat-card-subtitle>{{product.brand}}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <ul>
+        <li>{{product.specs.screenSize}}</li>
+        <li>{{product.specs.processor}}</li>
+        <li>{{product.specs.ram}}</li>
+        <li>{{product.specs.storage}}</li>
+        <li>{{product.specs.battery}}</li>
+      </ul>
+      <router-outlet></router-outlet>
+    </mat-card-content>
+  </div>
+  </mat-card>
+  <div>
+    <h3>Ratings and Reviews</h3>
+    <p>Average Rating: 4</p>
+    <p>Number of reviews: 60</p>
+    <a [routerLink]="['product-reviews']">See all ratings and reviews</a>
+
+  </div>
+  <section>
+    <h3>Questions</h3>
+    <p>Average Rating: 4</p>
+    <p>Number of reviews: 60</p>
+    <a [routerLink]="['product-questions']">See all Questions</a>
+
+  </section>
+}

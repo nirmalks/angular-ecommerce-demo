@@ -11,7 +11,43 @@ const mobiles = [
       "storage": "128 GB",
       "battery": "4000 mAh"
     },
-    "imageUrl": "https://example.com/samsung-galaxy-s23.jpg"
+    "imageUrl": "https://example.com/samsung-galaxy-s23.jpg",
+    "reviews": [
+      {
+        "user": "John Doe",
+        "rating": 4.5,
+        "comment": "Great phone with an amazing display and battery life!",
+        "date": "2024-08-01"
+      },
+      {
+        "user": "Jane Smith",
+        "rating": 4.0,
+        "comment": "Good performance, but the camera could be better.",
+        "date": "2024-08-05"
+      }
+    ],
+    "questions": [
+      {
+        "question": "Does this phone support 5G?",
+        "answers": [
+          {
+            "user": "TechExpert",
+            "answer": "Yes, the Samsung Galaxy S23 supports 5G connectivity.",
+            "date": "2024-07-30"
+          }
+        ]
+      },
+      {
+        "question": "What is the battery life like?",
+        "answers": [
+          {
+            "user": "BatteryGuru",
+            "answer": "The battery lasts for about a day with moderate usage.",
+            "date": "2024-08-02"
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "2",
