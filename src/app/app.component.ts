@@ -6,13 +6,13 @@ import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
-import { ProductsService } from './products.service';
 import { HomeComponent } from "./home/home.component";
 import { RouterModule } from '@angular/router';
+import { LoadingComponent } from "./loading/loading.component";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MatSidenavModule, MatToolbarModule, MatListModule, MatIconModule, MatMenuModule, MatButtonModule, HomeComponent, RouterModule],
+  imports: [RouterOutlet, MatSidenavModule, MatToolbarModule, MatListModule, MatIconModule, MatMenuModule, MatButtonModule, HomeComponent, RouterModule, LoadingComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
