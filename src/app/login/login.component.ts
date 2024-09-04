@@ -1,6 +1,6 @@
 import { JsonPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { FormsModule, ReactiveFormsModule, FormControl, FormGroup , Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormControl, FormGroup , Validators, FormBuilder } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -15,9 +15,13 @@ import {MatInputModule} from '@angular/material/input';
 })
 export class LoginComponent {
   errorMessage = signal('');
-  loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('',[Validators.required]),
+
+  constructor(private formBuilder: FormBuilder) {
+
+  }
+  loginForm = this.formBuilder.group({
+    email: this.formBuilder.nonNullable.control('',[Validators.required, Validators.email]),
+    password: this.formBuilder.nonNullable.control('',[Validators.required]),
   });
 
   updateErrorMessage() {
