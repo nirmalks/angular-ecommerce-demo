@@ -3,6 +3,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { CartComponent } from './cart/cart.component';
+import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
   {
@@ -25,6 +27,11 @@ export const routes: Routes = [
   {
     path: "products",
     loadChildren: () => import('./products-module/products-module.module').then(m => m.ProductsModuleModule)
+  },
+  {
+    path: "cart",
+    component: CartComponent,
+    canActivate: [authGuard]
   },
   {
     path: "**",
