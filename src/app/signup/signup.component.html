@@ -1,1 +1,30 @@
-<p>signup works!</p>
+<div class="data-form">
+  <h2 class="title">Signup</h2>
+  <mat-stepper #stepper>
+    <mat-step [stepControl]="step1.signupForm" errorMessage="Basic details is required.">
+        <ng-template matStepLabel>Basic details</ng-template>
+        <app-signup-step1 #step1></app-signup-step1>
+        <div class="stepper-buttons">
+            <button mat-raised-button color="primary" matStepperNext>
+                Continue to Step 2</button>
+        </div>
+    </mat-step>
+    <mat-step [stepControl]="step2.form" errorMessage="Bio is required.">
+
+        <app-signup-step2 #step2></app-signup-step2>
+        <ng-template matStepLabel>Bio details</ng-template>
+        <div class="stepper-buttons">
+          <button mat-raised-button matStepperPrevious>Back</button>
+          <button mat-raised-button color="primary"
+          [disabled]="!step2.form.valid && !step1.signupForm.valid"
+          (click)="submit(step1.signupForm.value, step2.form.value)">
+          Create User
+      </button>
+      </div>
+
+    </mat-step>
+
+  </mat-stepper>
+</div>
+
+

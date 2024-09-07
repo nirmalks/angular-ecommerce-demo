@@ -9,20 +9,24 @@ import {MatButtonModule} from '@angular/material/button';
 import { HomeComponent } from "./home/home.component";
 import { RouterModule } from '@angular/router';
 import { LoadingComponent } from "./loading/loading.component";
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule, JsonPipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthStoreService } from './auth-store.service';
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, MatSidenavModule, MatToolbarModule, MatListModule, MatIconModule, MatMenuModule, MatButtonModule, HomeComponent, RouterModule, LoadingComponent ,
-  ],
+  JsonPipe, AsyncPipe],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'ecommerce-ng';
 
-  constructor() {
+  constructor(public auth: AuthStoreService) {
+  }
+
+  logout() {
+    this.auth.logout();
   }
 }
