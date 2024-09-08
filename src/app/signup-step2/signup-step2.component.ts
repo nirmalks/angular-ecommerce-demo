@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -7,7 +7,8 @@ import {provideNativeDateAdapter} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
-import { emit } from 'process';
+import { filter } from 'rxjs';
+import { DOCUMENT } from '@angular/common';
 @Component({
   selector: 'app-signup-step2',
   standalone: true,
@@ -17,8 +18,7 @@ import { emit } from 'process';
   styleUrl: './signup-step2.component.scss'
 })
 export class SignupStep2Component implements OnInit {
-  constructor(private formBuilder: FormBuilder) {
-
+  constructor(private formBuilder: FormBuilder, @Inject(DOCUMENT) private document: Document) {
   }
   public form = this.formBuilder.group({
     gender: ['', [Validators.required]],
@@ -42,6 +42,14 @@ export class SignupStep2Component implements OnInit {
         refSourceControl?.setValue('');
       }
 
-    })
+    });
+
+    const savedForm = this.document.defaultView?.localStorage?.getItem('step2');
+    if(savedForm) {
+      this.form.setValue(JSON.parse(savedForm));
+    }
+    this.form.valueChanges.pipe(filter(() => this.form.valid)).subscribe(
+      val => this.document.defaultView?.localStorage.setItem('step2', JSON.stringify(val))
+    );
   }
 }
