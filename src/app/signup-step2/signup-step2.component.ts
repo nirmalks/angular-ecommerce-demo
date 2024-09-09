@@ -8,11 +8,12 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
 import { filter } from 'rxjs';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, JsonPipe } from '@angular/common';
+import { FileUploadComponent } from "../file-upload/file-upload.component";
 @Component({
   selector: 'app-signup-step2',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule,MatRadioModule, MatDatepickerModule, MatCheckboxModule, MatSelectModule],
+  imports: [MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, MatRadioModule, MatDatepickerModule, MatCheckboxModule, MatSelectModule, FileUploadComponent, JsonPipe ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './signup-step2.component.html',
   styleUrl: './signup-step2.component.scss'
@@ -24,7 +25,8 @@ export class SignupStep2Component implements OnInit {
     gender: ['', [Validators.required]],
     dob: ['', [Validators.required]],
     isReferred:[''],
-    refSource: ['']
+    refSource: [''],
+    dpFile: [null]
   });
 
   get isReferred() {

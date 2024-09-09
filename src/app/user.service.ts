@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 
@@ -5,6 +6,7 @@ import { of } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
+  constructor(private http: HttpClient) {}
   users = [
     {
       id: 1,
@@ -36,5 +38,12 @@ export class UserService {
     return of(this.users);
   }
 
-  constructor() { }
+  dpUpload(dp: FormData) {
+    // return of(true);
+    return this.http.post("api/dp-upload", dp, {
+      reportProgress: true,
+      observe: 'events'
+    });
+  }
+
 }
