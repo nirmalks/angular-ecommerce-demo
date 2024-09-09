@@ -6,7 +6,7 @@ import { catchError, finalize, of } from 'rxjs';
 
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { HttpEventType } from '@angular/common/http';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator } from '@angular/forms';
 @Component({
   selector: 'app-file-upload',
   standalone: true,
@@ -17,21 +17,43 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
       provide: NG_VALUE_ACCESSOR,
       multi: true,
       useExisting: FileUploadComponent
+    },
+    {
+      provide: NG_VALIDATORS,
+      multi: true,
+      useExisting: FileUploadComponent
     }
   ],
   styleUrl: './file-upload.component.scss'
 })
-export class FileUploadComponent implements ControlValueAccessor{
+export class FileUploadComponent implements ControlValueAccessor, Validator {
   @Input()
-  fileType: string = '';
+  requiredFileType: string = '';
   fileName: string= '';
   error = false;
   uploadProgress: number = 0;
   onChange = (fileName: string) => { this.fileName = fileName};
   onTouched = () => {};
+  onValidatorChange = () => {};
   isDisabled = false;
+  fileUploadSuccess = false;
   constructor(private userService: UserService) {
 
+  }
+  validate(control: AbstractControl): ValidationErrors | null {
+    if(this.fileUploadSuccess) {
+      return null;
+    }
+    let errors: any = {
+      requiredFileType: this.requiredFileType
+    }
+    if(!this.fileUploadSuccess) {
+      errors.uploadFailed = true;
+    }
+    return errors;
+  }
+  registerOnValidatorChange?(fn: () => void): void {
+    this.onValidatorChange = fn;
   }
   writeValue(obj: any): void {
     this.fileName = obj;
@@ -51,6 +73,7 @@ export class FileUploadComponent implements ControlValueAccessor{
     const formData = new FormData();
     formData.append("dp", file);
     this.onChange(this.fileName); // to circumvent api error as there is no BE
+    this.fileUploadSuccess = true;
     this.userService.dpUpload(formData).pipe(
       catchError(error => {
         this.error = true;
@@ -64,6 +87,8 @@ export class FileUploadComponent implements ControlValueAccessor{
         this.uploadProgress = Math.round(100 * (event.loaded / event.total));
       } else if(event.type == HttpEventType.Response) {
         this.onChange(this.fileName);
+        this.fileUploadSuccess = true;
+        this.onValidatorChange();
       }
     });
   }

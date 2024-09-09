@@ -1,4 +1,4 @@
-<input type="file" class="file-input" #fileUpload (change)="onFileSelected($event)">
+<input type="file" class="file-input"   [accept]="requiredFileType" #fileUpload (change)="onFileSelected($event)">
 
 <section class="file-upload">
   <mat-form-field>
