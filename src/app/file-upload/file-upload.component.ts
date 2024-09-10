@@ -74,6 +74,8 @@ export class FileUploadComponent implements ControlValueAccessor, Validator {
     formData.append("dp", file);
     this.onChange(this.fileName); // to circumvent api error as there is no BE
     this.fileUploadSuccess = true;
+    this.onValidatorChange();
+    return true;// to circumvent api error as there is no BE , should be removed if there is BE
     this.userService.dpUpload(formData).pipe(
       catchError(error => {
         this.error = true;

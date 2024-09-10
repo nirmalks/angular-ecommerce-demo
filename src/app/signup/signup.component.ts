@@ -8,11 +8,12 @@ import { SignupStep1Component } from "../signup-step1/signup-step1.component";
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import { MatStepperModule } from '@angular/material/stepper';
 import { SignupStep2Component } from '../signup-step2/signup-step2.component';
+import { SignupStep3Component } from '../signup-step3/signup-step3.component';
 @Component({
   selector: 'app-signup',
   standalone: true,
   imports: [MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, MatCardModule, SignupStep1Component,
-    MatStepperModule, SignupStep2Component],
+    MatStepperModule, SignupStep2Component, SignupStep3Component],
   providers: [UserService,
     {
       provide: STEPPER_GLOBAL_OPTIONS,
@@ -23,8 +24,8 @@ import { SignupStep2Component } from '../signup-step2/signup-step2.component';
   styleUrl: './signup.component.scss'
 })
 export class SignupComponent {
-  submit(step1: any, step2: any) {
-    console.log(step1, step2)
+  submit(step1: any, step2: any, step3: any) {
+    console.log(step1, step2, step3)
   }
 
 }

@@ -43,7 +43,6 @@ export class SignupStep2Component implements OnInit {
         refSourceControl?.clearValidators();
         refSourceControl?.setValue('');
       }
-
     });
 
     const savedForm = this.document.defaultView?.localStorage?.getItem('step2');

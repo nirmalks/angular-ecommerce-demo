@@ -10,20 +10,25 @@
         </div>
     </mat-step>
     <mat-step [stepControl]="step2.form" errorMessage="Bio is required.">
-
         <app-signup-step2 #step2></app-signup-step2>
         <ng-template matStepLabel>Bio details</ng-template>
         <div class="stepper-buttons">
           <button mat-raised-button matStepperPrevious>Back</button>
-          <button mat-raised-button color="primary"
-          [disabled]="!step2.form.valid"
-          (click)="submit(step1.signupForm.value, step2.form.value)">
-          Create User
-      </button>
+          <button mat-raised-button color="primary" matStepperNext>
+            Continue to Step 3</button>
       </div>
-
     </mat-step>
 
+    <mat-step [stepControl]="step3.form" errorMessage="Family details is required.">
+      <ng-template matStepLabel>Family details details</ng-template>
+      <app-signup-step3 #step3></app-signup-step3>
+      <div class="stepper-buttons">
+        <button mat-raised-button color="primary" [disabled]="!step3.form.valid"
+          (click)="submit(step1.signupForm.value, step2.form.value, step3.form.value)">
+          Create User
+        </button>
+      </div>
+    </mat-step>
   </mat-stepper>
 </div>
 

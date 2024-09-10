@@ -1,0 +1,29 @@
+<h3>Add Family details</h3>
+
+<section class="add-family-form" [formGroup]="form">
+    <ng-container formArrayName="family">
+    @for (memberForm of familyArrayControls; track $index) {
+      <div [formGroup]="memberForm">
+      <mat-form-field appearance="fill">
+        <input matInput placeholder="Member name" formControlName="name">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-select placeholder="Relationship" formControlName="relationship">
+          <mat-option value="brother">Brother</mat-option>
+          <mat-option value="sister">Sister</mat-option>
+          <mat-option value="mother">Mother</mat-option>
+          <mat-option value="father">Father</mat-option>
+          <mat-option value="son">Son</mat-option>
+          <mat-option value="daughter">Daughter</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-icon class="delete-btn"(click)="deleteFamilyMember($index)">delete_forever</mat-icon>
+    </div>
+    }
+  </ng-container>
+
+  <button mat-mini-fab>
+    <mat-icon class="add-course-btn" (click)="addFamilyMember()">add</mat-icon>
+  </button>
+
+</section>
