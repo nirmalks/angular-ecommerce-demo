@@ -1,0 +1,15 @@
+<fieldset [formGroup]="form">
+  <legend>{{legend}}</legend>
+
+  <mat-form-field>
+    <input matInput placeholder="Address Line 1" formControlName="addressLine1" (blur)="onTouched()">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="City" formControlName="city" (blur)="onTouched()">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Pin Code" formControlName="pinCode" (blur)="onTouched()">
+  </mat-form-field>
+</fieldset>

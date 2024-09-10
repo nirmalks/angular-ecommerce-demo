@@ -29,6 +29,8 @@
           <mat-error>{{confirmPasswordErrorMessage()}}</mat-error>
         }
       </mat-form-field>
+
+      <app-address-form legend="Address Details" formControlName="address"></app-address-form>
       <!-- <button type="submit" [disabled]="!signupForm.valid">Submit</button> -->
       <button type="submit" (click)="reset()">Reset</button>
 

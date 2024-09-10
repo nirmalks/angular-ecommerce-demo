@@ -16,7 +16,7 @@
         <div class="stepper-buttons">
           <button mat-raised-button matStepperPrevious>Back</button>
           <button mat-raised-button color="primary"
-          [disabled]="!step2.form.valid && !step1.signupForm.valid"
+          [disabled]="!step2.form.valid"
           (click)="submit(step1.signupForm.value, step2.form.value)">
           Create User
       </button>

@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { AfterViewInit, Component, signal } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { comparePasswordValidator } from '../comparepasswordvalidator';
 import { emailAvailableValidator } from '../emailAvailableValidator';
@@ -6,11 +6,12 @@ import { UserService } from '../user.service';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { AddressFormComponent } from '../address-form/address-form.component';
 
 @Component({
   selector: 'app-signup-step1',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, MatCardModule],
+  imports: [MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, MatCardModule, AddressFormComponent],
   templateUrl: './signup-step1.component.html',
   styleUrl: './signup-step1.component.scss'
 })
@@ -26,7 +27,8 @@ export class SignupStep1Component {
   signupForm = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email], [ emailAvailableValidator( this.usersService)]],
     password: ['', [Validators.required]],
-    confirmPassword: ['', [Validators.required]]
+    confirmPassword: ['', [Validators.required]],
+    address: ['',[Validators.required]]
   },
   {
     validators: comparePasswordValidator('password', 'confirmPassword'),
@@ -72,7 +74,6 @@ export class SignupStep1Component {
       this.confirmPasswordErrorMessage.set('');
     }
   }
-
 
   reset() {
     this.signupForm.reset();
