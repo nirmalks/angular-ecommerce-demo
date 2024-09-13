@@ -7,6 +7,8 @@ import { ProductResolver } from "../product/product.resolver";
 import { ProductReviewsComponent } from "../product-reviews/product-reviews.component";
 import { ProductQuestionsComponent } from "../product-questions/product-questions.component";
 import { ProductDetailComponent } from "../product-detail/product-detail.component";
+import { confirmExitGuard } from "../confirm-exit.guard";
+import { authGuard } from "../auth.guard";
 
 const routes: Routes = [
   {
@@ -24,6 +26,8 @@ const routes: Routes = [
     path: 'mobiles/:productName',
     component: ProductComponent,
     resolve: {product: ProductResolver},
+    canDeactivate: [confirmExitGuard],
+    canActivate: [authGuard],
     children: [
       {
         path: "",

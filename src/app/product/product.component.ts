@@ -18,4 +18,10 @@ export class ProductComponent {
   ngOnInit() : void {
     this.product = this.route.snapshot.data['product'];
   }
+
+  canDeactivate(): boolean {
+    return confirm(
+        'Are you sure you want to leave? Some data may be lost.'
+    );
+  }
 }

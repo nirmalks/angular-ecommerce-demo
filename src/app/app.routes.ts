@@ -26,12 +26,13 @@ export const routes: Routes = [
   },
   {
     path: "products",
-    loadChildren: () => import('./products-module/products-module.module').then(m => m.ProductsModuleModule)
+    loadChildren: () => import('./products-module/products-module.module').then(m => m.ProductsModuleModule),
+    canLoad: [authGuard]
   },
   {
     path: "cart",
     component: CartComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: "**",
