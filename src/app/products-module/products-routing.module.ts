@@ -1,4 +1,4 @@
-import { RouterModule, Routes } from "@angular/router";
+import { PreloadAllModules, PreloadingStrategy, RouterModule, Routes } from "@angular/router";
 import { ProductsListComponent } from "../products-list/products-list.component";
 import { Component, NgModule } from "@angular/core";
 import { MobilesResolver } from "../mobiles/mobile.resolver";
@@ -48,7 +48,7 @@ const routes: Routes = [
 
 @NgModule({
 imports: [
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
 ],
 exports: [RouterModule],
 providers: [
