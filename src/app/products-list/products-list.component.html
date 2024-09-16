@@ -1,5 +1,5 @@
 @for (product of products | async; track $index) {
-  <a [routerLink] ="[product.name]">
+  <a [routerLink] ="[product.name]" [queryParams]="{discountCode:'bigbillion'}">
   <mat-card class="display-flex" appearance="outlined">
     <div class="display-flex">
       <img mat-card-image src="../assets/moto-phone.webp" alt={{product.name}}>

@@ -14,9 +14,11 @@ import { Observable, of } from 'rxjs';
 })
 export class ProductComponent {
   product:any = of(null);
+  discountCode: string;
   private readonly route: ActivatedRoute = inject(ActivatedRoute);
   ngOnInit() : void {
     this.product = this.route.snapshot.data['product'];
+    this.discountCode = this.route.snapshot.queryParamMap.get('discountCode')!;
   }
 
   canDeactivate(): boolean {

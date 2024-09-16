@@ -1,7 +1,6 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
-import { ProductsService } from '../products.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { map, Observable, of } from 'rxjs';
 import { AsyncPipe } from '@angular/common';

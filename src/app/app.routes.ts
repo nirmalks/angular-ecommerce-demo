@@ -5,6 +5,7 @@ import { SignupComponent } from './signup/signup.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CartComponent } from './cart/cart.component';
 import { authGuard } from './auth.guard';
+import { ChatComponent } from './chat/chat.component';
 
 export const routes: Routes = [
   {
@@ -33,6 +34,11 @@ export const routes: Routes = [
     path: "cart",
     component: CartComponent,
     canActivate: [authGuard],
+  },
+  {
+    path: "help-chat",
+    component: ChatComponent,
+    outlet: 'chat'
   },
   {
     path: "**",
