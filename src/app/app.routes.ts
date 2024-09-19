@@ -6,6 +6,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { CartComponent } from './cart/cart.component';
 import { authGuard } from './auth.guard';
 import { ChatComponent } from './chat/chat.component';
+import { InventoryComponent } from './inventory/inventory.component';
+import { MobilesResolver } from './mobiles/mobile.resolver';
 
 export const routes: Routes = [
   {
@@ -39,6 +41,11 @@ export const routes: Routes = [
     path: "help-chat",
     component: ChatComponent,
     outlet: 'chat'
+  },
+  {
+    path: "inventory",
+    component: InventoryComponent,
+    resolve: { mobiles: MobilesResolver },
   },
   {
     path: "**",
